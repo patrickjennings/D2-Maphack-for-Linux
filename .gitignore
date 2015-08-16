@@ -1,3 +1,9 @@
+# Swap files
+*.swp
+
+# surgeon object file
+surgeon/surgeon
+
 # Object files
 *.o
 *.ko
