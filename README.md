@@ -30,15 +30,15 @@ Unload the maphack module at anytime using the following:
 This is only necessary if you would like to go back to the stock game.
 
 # FAQ
-Question: How do I look at another players gear?
-Answer: Hover over the player and press the inventory key.
+**Question**: How do I look at another players gear?
+**Answer**: Hover over the player and press the inventory key.
 
-Question: How does the maphack work?
-Answer: The maphack is compiled into a shared library which is injected into the
+**Question**: How does the maphack work?
+**Answer**: The maphack is compiled into a shared library which is injected into the
 running process. The injection script is used to get the process id of the game
 then uses the injection program to load the static library into the running
 game.
 
-Question: Did you write this maphack?
-Answer: I did not write this maphack. I am not taking credit for its creation. I am
+**Question**: Did you write this maphack?
+**Answer**: I did not write this maphack. I am not taking credit for its creation. I am
 only providing a convenient means of installing and running it.
