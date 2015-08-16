@@ -1,0 +1,95 @@
+snoogans v 0.5
+
+
+Features:
+---------
+
+	- updated to work with patch 1.13d
+
+
+NOTE: Do NOT use the configure script, it is broken in its current form. To 
+compile a binary for the latest version (1.13d) run make without configuring 
+beforehand. Be advised that you should use snoogans v 0.4 for older versions.
+
+
+
+snoogans v 0.4 by gonzoj
+
+
+Features:
+---------
+
+	- compatible with latest patch 1.13c
+	- reveals automap
+	- draws preset units onto automap (including frozen Anya, Izual etc.)
+	- places monsters and missiles onto automap (indicates immunities with 
+	  intiutive colors)
+	- draws names over champion and boss monsters
+	- draws level names over exits (the correct Tal Rasha's tomb is colored 
+	  green)
+	- adds IP address of the game server to the automap information
+	- puts the last game name into the create / join box
+	- enables the player to view other players' gear
+	- displays the iLvl of items, the number of sockets and if it's ethereal
+
+	
+Requirements:
+-------------
+
+snoogans in its current version depends on various modules of wine (e.g. 
+kernel32.dll.so), to be able to initialize correctly. If you're not running 
+Diablo under wine, you cannot use snoogans at the moment. I don't consider this 
+a major issue, because most of you will use wine anyway. Just wanted to make 
+that clear.
+
+	
+Installation:
+-------------
+
+snoogans can be build for two versions of Diablo, 1.12a and 1.13c (released
+23.02.2010). To switch between the build process for the different versions 
+(default: 1.13c), use the simple configure script that is contained in the 
+release. If you'd like for instance to build snoogans for the 1.13c patch, 
+run:
+
+$ ./configure --version=1.13
+
+After you configured the build process, just compile:
+
+$ make
+
+And finally install snoogans:
+
+$ make install
+
+Now you're good to go. Optionally, you can clean up after installation:
+
+$ make clean
+
+To uninstall snoogans, run:
+
+$ make remove
+
+NOTE: The default location for installation is /usr/local/lib. If you're 
+dynamic loader can't find snoogans, consider to add this location to the 
+loader's configuration or adjust the installpath in the Makefile.
+
+
+Usage:
+------
+
+To use snoogans, you have to inject snoogans.so into the running process. I've 
+released an injector called surgeon, check the release thread at blizzhackers.cc
+for more information. However, you're not limited to use surgeon, you can use 
+whatever injector you prefer (there are some public available, although most of 
+them are merely a proof of conecpt implementation). You could even use gdb for 
+this purpose.
+
+IMPORTANT: Inject snoogans AFTER you've created / joined a game. Injecting it 
+previously will result in a not correctly initialized module, I may fix this 
+issue in an upcoming version.
+
+When snoogans has been loaded successfully, it will reveal the whole act 
+everytime you toggle the automap, if not done so already. To view other 
+players' gear select a player by hovering the mouse over its model and press 
+your inventory hotkey.

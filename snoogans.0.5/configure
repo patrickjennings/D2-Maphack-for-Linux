@@ -1,0 +1,27 @@
+#!/bin/bash
+
+usage () 
+{ 
+echo
+echo "usage:"
+echo "	./configure --version=VERSION"
+echo
+echo "	VERSION may be ´1.12´, or ´1.13´"
+echo
+}
+
+if [ $# -lt 1 ]; then
+	usage
+else
+	version=`echo $1 | sed -e '/^--version=[0-9.]*$/!d' -e 's/\./_/' -e 's/^--version=\([0-9_]*\)$/\1/'`
+	if [ "$version" != "" ]; then
+		if [ $version == "1_12" ] || [ $version == "1_13" ]; then
+			sed 's/\(_VERSION_\)[0-9_]*/\1'$version'/g' < ./version.h > ./tmp
+			mv ./tmp ./version.h
+		else
+			usage
+		fi
+	else
+		usage
+	fi
+fi

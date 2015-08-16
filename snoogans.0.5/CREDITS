@@ -1,0 +1,32 @@
+First of all, I'd like to note that this is NOT entirely "my" source code.
+
+I want to thank the following people (and probably forget to mention some 
+folks):
+
+ - McGod,
+ for releasing the source code of mMap. My implementation is heavily inspired 
+ by his code and I actually ripped off many functions. Check out his Readme, I 
+ guess I should thank those people, too.
+ 
+ - The D2BS crew,
+ for expending such an enormous effort for the community. I've learned a lot 
+ about Diablo II's internals by studying parts of the D2BS core's code. The 
+ function- and variable-pointers, as well as the structs for version 1.12 have 
+ been taken from D2BS.
+ 
+ - Anybody,
+ who contributed to the community by releasing pointers / structs / hooking 
+ code and updating them patch after patch (I've benefited from that for sure).
+ 
+ - The active Blizzhackers,
+ who spread knowledge on the forum and on IRC.
+
+ - Mousepad,
+ due to a request by ancienthit.
+ 
+ - bullson,
+ for spending time on testing / debugging my shitty code.
+ 
+I haven't bothered to name most of the people explicitly, since there are just 
+too many. If somebody feels not credited enough or finds himself not credited 
+at all, although I use his code, feel free to contact me.
