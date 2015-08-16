@@ -5,11 +5,15 @@ like displaying the item level of dropped items as well as displaying monsters a
 in the map.
 
 # Install
-To install, simply run
+To build, run:
 
 `make`
 
 This will build snoogans maphack as well as the module injector, surgeon.
+
+To install the program and scripts, run:
+
+`sudo make install`
 
 You will need to setup GCC for multilib to compile 32bit. In Arch, this is accomplished
 by installing gcc-multilib.
@@ -17,7 +21,7 @@ by installing gcc-multilib.
 # Revealing Maps
 Start Diablo using Wine and create a new game. Inject the maphack using the following:
 
-`sudo ./inject.sh`
+`d2-inject`
 
 This will load the maphack module into the currently running game. Any new game created
 or joined will have the maphack already loaded so you only need to do this once.
@@ -25,7 +29,7 @@ or joined will have the maphack already loaded so you only need to do this once.
 # Unloading Module
 Unload the maphack module at anytime using the following:
 
-`sudo ./unload.sh`
+`d2-unload`
 
 This is only necessary if you would like to go back to the stock game.
 
