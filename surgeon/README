@@ -1,0 +1,54 @@
+surgeon v 0.2 by gonzoj
+
+
+Installation:
+-------------
+
+Since this is a complete rewrite of my old injector, I'll recommend the debug 
+build. If it's crashing, you know why / where at least (theoretically).
+
+Anyway, to build choose between the standard and the debug build. For the 
+former run:
+
+$ make
+
+For the latter run:
+
+$ make debug
+
+And eventually install:
+
+$ make install
+
+If you got tired of injecting, type:
+
+$ make remove
+
+
+Usage:
+------
+
+Injecting a shared object OBJECT into a running process PID with surgeon is 
+easy:
+
+$ surgeon [-i] PID OBJECT
+
+To unload a shared object from a process, use the toggle -u:
+
+$ surgeon [-u] PID OBJECT
+
+In order to work properly, surgeon needs some (internal) libc functions. 
+Although it has built-in several ways to resolve those functions, it may occur 
+that the injection fails. In such a situation it can be useful, to set the 
+location of libc as well as the offsets for those function manually. The 
+options which allow that are --libc, --malloc, --free, --dlopen and --dlclose. 
+To obtain offsets manually, you could use readelf, for example. Run surgeon -h 
+to learn more.
+
+
+Note:
+-----
+
+This release contains as well two simple shell scripts, which inject / unload 
+snoogans into Diablo II. I won't bother to explain how to use them, I think it
+should be clear enough.
