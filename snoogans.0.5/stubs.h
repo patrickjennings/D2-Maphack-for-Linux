@@ -21,6 +21,9 @@
 #define STUBS_H_
 
 extern void
+draw_ingame_STUB();
+
+extern void
 draw_automap_STUB();
 
 extern void
