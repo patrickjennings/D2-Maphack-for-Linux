@@ -116,8 +116,6 @@ draw_automap()
 void
 draw_ingame()
 {
-  draw_text(400, 540, D2FONT_WHITE, 0, D2FONT_STANDARD, 1, "%s",
-      "snoogans.so v 0.5");
 }
 
 void __attribute__((fastcall))
