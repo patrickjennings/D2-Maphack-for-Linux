@@ -62,7 +62,6 @@ hook
 
 #ifdef _VERSION_1_13d /* updated */
             { i386_CALL, "D2Client.dll", 0x7349E, 5, draw_automap, NULL}, // updated
-            { i386_JUMP, "D2Client.dll", 0x1D7B4, 6, draw_ingame_STUB, NULL}, // updated
             { i386_CALL, "D2Client.dll", 0x96736, 6, item_name_patch_STUB, NULL}, // updated
             { i386_CALL, "D2Multi.dll", 0xB5E9, 5, next_game_name_patch, NULL}, // updated
             { i386_CALL, "D2Multi.dll", 0xADAB, 5, next_game_name_patch, NULL}, // updated
@@ -74,7 +73,6 @@ hook
 
 #elif defined _VERSION_1_13c /* updated */
             { i386_CALL, "D2Client.dll", 0x626FE, 5, draw_automap, NULL}, /* updated 0x6FB126FE */
-            { i386_JUMP, "D2Client.dll", 0xC3DB4, 6, draw_ingame_STUB, NULL}, /* updated 0x6FB73DB4 */
             { i386_CALL, "D2Client.dll", 0x92366, 6, item_name_patch_STUB, NULL}, /* updated 0x6FB42366 */
             { i386_CALL, "D2Multi.dll", 0x14D29, 5, next_game_name_patch, NULL}, /* updated 0x6F9E4D29 */
             { i386_CALL, "D2Multi.dll", 0x14A0B, 5, next_game_name_patch, NULL}, /* updated 0x6F9E4A0B */
@@ -84,7 +82,6 @@ hook
 
 #elif defined _VERSION_1_12 /* from McGod's mMap (modified) */
             { i386_CALL, "D2Client.dll", 0x4063E, 5, draw_automap, NULL },
-            { i386_JUMP, "D2Client.dll", 0x90524, 6, draw_ingame_STUB, NULL },
             { i386_CALL, "D2Client.dll", 0xAF242, 6, view_inventory_patch_1, NULL },
             { i386_CALL, "D2Client.dll", 0xAE914, 6, view_inventory_patch_2, NULL },
             { i386_CALL, "D2Client.dll", 0xAD93F, 5, view_inventory_patch_3, NULL },
@@ -111,13 +108,6 @@ draw_automap()
       draw_text(780, 122, D2FONT_GOLD, 0, D2FONT_SPECIAL, 0, "%s",
           D2CLIENT_get_game_info()->game_ip);
     }
-}
-
-void
-draw_ingame()
-{
-  draw_text(400, 540, D2FONT_WHITE, 0, D2FONT_STANDARD, 1, "%s",
-      "snoogans.so v 0.5");
 }
 
 void __attribute__((fastcall))

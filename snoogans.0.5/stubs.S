@@ -21,8 +21,6 @@
 
 # assembly stubs for hooking
 
-.globl draw_ingame_STUB
-
 .globl draw_automap_STUB
 
 .globl draw_message_log_STUB
@@ -32,15 +30,6 @@
 .globl view_inventory_patch_3
 
 .globl item_name_patch_STUB
-
-.type draw_ingame_STUB, @function
-draw_ingame_STUB:
-
-	call draw_ingame
-	pop %esi
-	pop %ebx
-	pop %ecx
-	ret $0x4
 
 .type draw_automap_STUB, @function
 draw_automap_STUB:
