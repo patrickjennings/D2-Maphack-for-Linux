@@ -23,6 +23,7 @@
 #include "d2structs.h"
 
 extern char last_game_name[512];
+extern char last_game_pass[512];
 
 extern unit_any *viewing_unit;
 
@@ -31,6 +32,10 @@ draw_automap();
 
 void __attribute__((fastcall))
 next_game_name_patch(vaddr, int __attribute__((stdcall))
+(*call_back)(vaddr, DWORD, DWORD));
+
+void __attribute__((fastcall))
+next_game_pass_patch(vaddr, int __attribute__((stdcall))
 (*call_back)(vaddr, DWORD, DWORD));
 
 int

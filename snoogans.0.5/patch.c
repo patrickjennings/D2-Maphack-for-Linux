@@ -38,6 +38,7 @@
 #define PAGE_ALIGN(addr) (addr & ~0xfff)
 
 char last_game_name[512];
+char last_game_pass[512];
 
 unit_any *viewing_unit;
 
@@ -54,8 +55,6 @@ typedef struct
   unsigned char *backup;
 } hook;
 
-#define N_HOOKS 8
-
 hook
     hooks[] =
       {
@@ -66,6 +65,8 @@ hook
             { i386_CALL, "D2Client.dll", 0x96736, 6, item_name_patch_STUB, NULL}, // updated
             { i386_CALL, "D2Multi.dll", 0xB5E9, 5, next_game_name_patch, NULL}, // updated
             { i386_CALL, "D2Multi.dll", 0xADAB, 5, next_game_name_patch, NULL}, // updated
+            { i386_CALL, "D2Multi.dll", 0xADE6, 5, next_game_pass_patch, NULL},
+            { i386_CALL, "D2Multi.dll", 0xB6BC, 5, next_game_pass_patch, NULL},
             { i386_CALL, "D2Client.dll", 0x997B2, 6, view_inventory_patch_1, NULL}, // updated
             { i386_CALL, "D2Client.dll", 0x98E84, 6, view_inventory_patch_2, NULL}, // updated
             { i386_CALL, "D2Client.dll", 0x97E3F, 5, view_inventory_patch_3, NULL}, // updated
@@ -99,6 +100,9 @@ hook
 #endif
 
     };
+
+#define N_HOOKS sizeof( hooks ) / sizeof( hooks[0] )
+
 
 void
 draw_automap()
@@ -165,6 +169,21 @@ next_game_name_patch(vaddr box, int __attribute__((stdcall))
   char_to_ms_wchar(last_game_name, wname);
   D2WIN_set_control_text(box, wname);
   D2WIN_select_edit_box_text(box, wname);
+  D2WIN_set_edit_box_proc(box, call_back);
+}
+
+void __attribute__((fastcall))
+next_game_pass_patch(vaddr box, int __attribute__((stdcall))
+(*call_back)(vaddr, DWORD, DWORD))
+{
+  if (strlen(last_game_pass) == 0)
+    {
+      return;
+    }
+  ms_wchar_t wpass[512];
+  char_to_ms_wchar(last_game_pass, wpass);
+  D2WIN_set_control_text(box, wpass);
+  D2WIN_select_edit_box_text(box, wpass);
   D2WIN_set_edit_box_proc(box, call_back);
 }
 

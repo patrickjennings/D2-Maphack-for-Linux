@@ -528,6 +528,7 @@ maphack(void *arg)
           if (info && reset)
             {
               strcpy(last_game_name, info->game_name);
+              strcpy(last_game_pass, info->game_pass);
               reset = 0;
             }
         }
